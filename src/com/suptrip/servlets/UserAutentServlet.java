@@ -36,8 +36,6 @@ public class UserAutentServlet extends HttpServlet implements Serializable{
 	@Override
 	public void doGet(HttpServletRequest requet, HttpServletResponse reponse){
 		Users user=new Users();
-		Bag bag =new Bag();
-		JpaBagDao jpaBag=new JpaBagDao();
 		
 		
 	

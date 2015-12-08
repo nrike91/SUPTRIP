@@ -27,7 +27,7 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Users user=new Users();
-		JpaCampusDao jpaCampus=new JpaCampusDao(PersistanceManager.getEntityManagerFactory());
+		JpaCampusDao jpaCampus=(JpaCampusDao) request.getAttribute("jpacampus");
 		user.setFirstName(request.getParameter("firstname"));
 		user.setLastName(request.getParameter("lastname"));
 		user.setPasswd(request.getParameter("password"));

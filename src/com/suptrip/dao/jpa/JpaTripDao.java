@@ -7,8 +7,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
+import org.apache.catalina.User;
+
 import com.suptrip.dao.TripDao;
 import com.suptrip.entities.Trip;
+import com.suptrip.entities.Users;
 
 public class JpaTripDao implements TripDao{
 	EntityManagerFactory emf;
@@ -36,6 +39,7 @@ public class JpaTripDao implements TripDao{
 		em.close();
 		
 	}
+
 
 	@Override
 	public Trip findTripById(Long id) {
@@ -111,5 +115,7 @@ public class JpaTripDao implements TripDao{
 		}
 		
 	}
+
+	
 
 }
