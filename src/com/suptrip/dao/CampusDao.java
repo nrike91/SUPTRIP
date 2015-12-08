@@ -8,5 +8,6 @@ public interface CampusDao {
 	void addCampus(Campus campus);
 	void removeCampus(Campus campus);
 	List<Campus> getAllCampus();
+	Campus getCampusById(Long id);
 
 }

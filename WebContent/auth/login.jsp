@@ -6,11 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-
-
 <body>
+		<form method="post" action="<%=application.getContextPath() %>/login">
+		<label for="id">IdBooster : </label>
+		<input id="id" name="id" /><br />
+		
+		<label for="password">password: </label>
+		<input id="password" name="password"  type="password"/><br />
+		<input type="submit" />
+		</form>
+		
 
-
-<p>je suis l'index hahahahah  </p>
 </body>
 </html>

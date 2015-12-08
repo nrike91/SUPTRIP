@@ -2,8 +2,10 @@ package com.suptrip.dao.jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 
 import com.suptrip.dao.UsersDao;
+import com.suptrip.entities.Campus;
 import com.suptrip.entities.Trip;
 import com.suptrip.entities.Users;
 
@@ -70,6 +72,21 @@ public class JpaUsersDao implements UsersDao {
 		}
 		em.close();
 		
+	}
+	@Override
+	public Users getUserById(Long id) {
+		// TODO Auto-generated method stub
+		EntityManager em=emf.createEntityManager();
+		try {
+			return (Users)em.find(Users.class, id);
+			
+		}catch(NoResultException e){
+			return null;	
+		}
+		finally {
+			// TODO: handle finally clause
+			em.close();
+		}
 	}
 
 	@Override

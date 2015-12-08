@@ -77,11 +77,11 @@ public class UserAutentServlet extends HttpServlet implements Serializable{
 		user.setTrip(listTrip);
 		JpaUsersDao jpaUser=new JpaUsersDao(PersistanceManager.getEntityManagerFactory());
 		jpaUser.addUser(user);
-		
+		requet.setAttribute("campus",jpaCampus.getAllCampus() );
 		
 		
 		try {
-			getServletContext().getRequestDispatcher("/index.jsp").forward(requet, reponse);
+			getServletContext().getRequestDispatcher("/auth/register.jsp").forward(requet, reponse);
 		} catch (ServletException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

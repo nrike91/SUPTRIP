@@ -9,7 +9,7 @@ public interface UsersDao {
 	void updateUser(Users user);
 	void addTripInBag (Users user,Trip trip );
 	void removeTripInbag(Users user, Trip trip);
-	
+	Users getUserById(Long id) ;
 	
 	
 	

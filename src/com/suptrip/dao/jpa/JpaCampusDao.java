@@ -59,12 +59,29 @@ public class JpaCampusDao implements CampusDao {
 		// TODO Auto-generated method stub
 		EntityManager em=emf.createEntityManager();
 		try {
-			Query query=em.createQuery("SELECT c FROM CAMPUS as c ");
-			return query.getResultList();
+			Query query=em.createQuery("SELECT c FROM Campus AS c");
+			return ( List<Campus>) query.getResultList();
 		} catch (NoResultException e) {
 			// TODO: handle exception
 		}
 		return null;
+	}
+
+	@Override
+	public Campus getCampusById(Long id) {
+		// TODO Auto-generated method stub
+		EntityManager em=emf.createEntityManager();
+		try {
+			return (Campus)em.find(Campus.class, id);
+			
+		}catch(NoResultException e){
+			return null;	
+		}
+		finally {
+			// TODO: handle finally clause
+			em.close();
+		}
+		
 	}
 
 }
