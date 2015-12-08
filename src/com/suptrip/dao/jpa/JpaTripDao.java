@@ -38,12 +38,12 @@ public class JpaTripDao implements TripDao{
 	}
 
 	@Override
-	public Trip findTripByName(String value) {
+	public Trip findTripById(Long id) {
 		// TODO Auto-generated method stub
 	EntityManager em=emf.createEntityManager(); 
 	try {
 		Query query= em.createQuery("SELECT c FROM Trip As c where c.idTrip=:id");
-		query.setParameter("id", value);
+		query.setParameter("id", id);
 		return (Trip) query.getSingleResult();
 		
 	} catch (NoResultException e) {

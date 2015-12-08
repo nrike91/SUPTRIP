@@ -30,26 +30,18 @@ public class login extends HttpServlet {
 		if (user!=null) {
 			if (user.getPasswd().equals(request.getParameter("password"))) {
 				session.setAttribute("user", user);
+				
 				getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				
 			}
 			
 		}
 			
-			
-
-			
-			//getServletConfig().getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);
-
-		
-			
-		
 	
-		
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect(request.getContextPath() + "/auth/login.jsp");
-		//getServletConfig().getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);
+		
 	}
 
 }

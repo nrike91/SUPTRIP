@@ -92,6 +92,7 @@ public class JpaUsersDao implements UsersDao {
 	@Override
 	public void addTripInBag(Users user, Trip trip) {
 		// TODO Auto-generated method stub
+		user.getTrip().remove(trip);
 		
 	}
 

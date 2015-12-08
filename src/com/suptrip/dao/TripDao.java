@@ -10,7 +10,7 @@ public interface TripDao {
 	List<Trip> getAllTripListByCampusName();
 	void removeTrip(Trip trip);
 	void updateTrip(Trip trip);
-	Trip findTripByName(String value);
+	Trip findTripById(Long id);
 	
 
 }
