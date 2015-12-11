@@ -63,7 +63,7 @@ public class JpaTripDao implements TripDao{
 	public List<Trip> getAllTripListByCampusName() {
 		EntityManager em=emf.createEntityManager(); 
 		try {
-			Query query = em.createQuery("SELECT c FROM TRIP AS c");
+			Query query = em.createQuery("SELECT c FROM TRIP AS c ORDER BY c.campusName");
 			return query.getResultList();
 		
 		} catch (NoResultException e) {

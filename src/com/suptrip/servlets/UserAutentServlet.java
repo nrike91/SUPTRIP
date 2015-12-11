@@ -20,7 +20,7 @@ import com.suptrip.dao.CampusDao;
 import com.suptrip.dao.jpa.JpaCampusDao;
 import com.suptrip.dao.jpa.JpaTripDao;
 import com.suptrip.dao.jpa.JpaUsersDao;
-import com.suptrip.entities.Bag;
+
 import com.suptrip.entities.Campus;
 import com.suptrip.entities.Trip;
 import com.suptrip.entities.Users;

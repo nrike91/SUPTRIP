@@ -17,13 +17,7 @@ public class Trip {
 	@Column
 	private String description;
 	
-	
-	@ManyToMany
-	@JoinTable(name="BAG_TRIP")
-	private List<Bag> tripBag;
-	
-	
-	
+
 	public long getIdTrip() {
 		return idTrip;
 	}
@@ -31,12 +25,7 @@ public class Trip {
 		this.idTrip = idTrip;
 	}
 	
-	public List<Bag> getBag() {
-		return tripBag;
-	}
-	public void setBag(List<Bag> bag) {
-		this.tripBag = bag;
-	}
+	
 	
 	public Date getDate() {
 		return date;

@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<%@ include file="/header.jsp" %>
+
 <form method="post" action="<%=application.getContextPath()%>/RegisterServlet">
 		<label for="firstname">firstname : </label>
 		<input id="firstname" name="firstname" /><br />
@@ -32,5 +34,6 @@
 		<input type="submit" />
 	</form>
 	
+	<%@ include file="/footer.jsp" %>
 </body>
 </html>

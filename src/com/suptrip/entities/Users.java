@@ -22,9 +22,7 @@ public class Users implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="ID_CAMPUS")
 	private Campus idCampus;
-	@OneToOne
-	@JoinColumn(name="ID_BAG_FK")
-	private Bag bag;
+	
 	@ManyToMany
 	@JoinTable(name="USER_TRIP")
 	private List<Trip> trip;
@@ -36,12 +34,7 @@ public class Users implements Serializable{
 	public void setIdCampus(Campus idCampus) {
 		this.idCampus = idCampus;
 	}
-	public Bag getBag() {
-		return bag;
-	}
-	public void setBag(Bag bag) {
-		this.bag = bag;
-	}
+	
 	public List<Trip> getTrip() {
 		return trip;
 	}

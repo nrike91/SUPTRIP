@@ -28,21 +28,21 @@ public class RegisterServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		Users user=new Users();
 		JpaCampusDao jpaCampus=(JpaCampusDao) request.getAttribute("jpacampus");
+		JpaUsersDao jpaUser=(JpaUsersDao) request.getAttribute("jpauser");
 		user.setFirstName(request.getParameter("firstname"));
 		user.setLastName(request.getParameter("lastname"));
 		user.setPasswd(request.getParameter("password"));
 		user.setEmailAdress(request.getParameter("email"));
-		user.setIdCampus(jpaCampus.getCampusById( Long.parseLong(request.getParameter("Campus"))));
-		
-		
-		JpaUsersDao jpaUser=new JpaUsersDao(PersistanceManager.getEntityManagerFactory());
+		user.setIdCampus(jpaCampus.getCampusById(Long.parseLong(request.getParameter("Campus"))));
 		jpaUser.addUser(user);
-		getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);
-		
+		//request.setAttribute("campus",jpaCampus.getAllCampus() );
+		getServletConfig().getServletContext().getRequestDispatcher("/auth/register.jsp").forward(request, response);
+
 		
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.sendRedirect(request.getContextPath() + "/auth/login.jsp");
+	
 		getServletConfig().getServletContext().getRequestDispatcher("/auth/register.jsp").forward(request, response);
 	}
 

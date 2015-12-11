@@ -2,7 +2,6 @@
 pageEncoding="UTF-8"%>
 
 <p>
-<a href="">Product List</a> |
 
 <% if(session.getAttribute("username") != null) { %>
 <a href="<%= application.getContextPath() %>/logout">Logout</a>
