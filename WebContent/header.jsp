@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-
-<p>
+ <link href="css/style.css" rel="stylesheet">
+<a href="">Product List</a> 
 
 <% if(session.getAttribute("username") != null) { %>
 <a href="<%= application.getContextPath() %>/logout">Logout</a>
@@ -9,4 +9,3 @@ pageEncoding="UTF-8"%>
 <a href="<%= application.getContextPath() %>/login">Login</a>
 <a href="<%= application.getContextPath() %>">Register</a>
 <% } %>
-</p>

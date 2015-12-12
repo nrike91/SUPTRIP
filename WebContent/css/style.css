@@ -1,0 +1,31 @@
+body {
+  padding-top: 10px;
+}
+[class*="col-"], footer {
+  background-color: lightgreen;
+  border: 2px solid black;
+  border-radius: 6px;
+  line-height: 40px;
+  text-align: center;
+}
+.inline-form input {
+  display: inline-block;
+  width: 100px;
+}
+
+.HeadLogo {
+    position: relative;
+    float: left;
+    top: 10px;
+    left: 40px;
+    height:42px;
+}
+
+.navbar-right li a {
+    color: #4e6ac2;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    
+     height:42px;
+}
