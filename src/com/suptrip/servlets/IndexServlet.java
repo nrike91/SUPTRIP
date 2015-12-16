@@ -68,30 +68,39 @@ public class IndexServlet extends HttpServlet {
 				Campus campus =new Campus();
 				JpaCampusDao jpaCampus =new JpaCampusDao(PersistanceManager.getEntityManagerFactory());
 				campus.setCampusName("Esi/App");
-				jpaCampus.addCampus(campus);
 				user.setFirstName("Moussa");
 				user.setLastName("Mamadou");
 				user.setPasswd("Password");
 				user.setEmailAdress("moussa@moussa.com");
-				user.setIdcampus(campus);
+				user.setIdCampus(campus);
 				//user.setBag(bag);
 				listTrip.add(trip1);
 				listTrip.add(trip2);
 				listTrip.add(trip3);
-
+				
 				
 				
 				user.setTrip(listTrip);
+				
+				campus.setTrip(listTrip);
+				jpaCampus.addCampus(campus);
+
 				//JpaUsersDao jpaUser=new JpaUsersDao(PersistanceManager.getEntityManagerFactory());
 				jpaUser.addUser(user);
-				request.setAttribute("campus",jpaCampus.getAllCampus() );
+				
+				request.setAttribute("trips",jpaTrip.getAllTrip());
+				request.setAttribute("nbTrip",jpaTrip.getAllTrip().size());
+				request.setAttribute("nbcampus",jpaCampus.getAllCampus().size() );
+				request.setAttribute("nbUsers", jpaUser.getUserAllUsers().size());
 		 
 		 
-		getServletContext().getRequestDispatcher("/auth/register.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		 
+		//getServletContext().getRequestDispatcher("/page/listtrip.jsp").forward(request, response);
 
 
 	}

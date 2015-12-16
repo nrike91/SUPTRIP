@@ -11,26 +11,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-     	<%@ include file="/header.inc.jsp" %>
-     
-        <div class="container">
+	<%@ include file="/header.inc.jsp" %>
+
+   <div class="container">
     <div class="row col-md-6 col-md-offset-2 custyle">
+    
     <table class="table table-striped custab">
     <thead>
+    <h1>${campusname }</h1>
       <tr>
-            <th>CAMPUS</th>
+            <th>ID</th>
             <th>Description</th>
             <th>Date</th>
             <th class="text-center">Action</th>
         </tr>
     </thead>
-    <c:forEach items="${listCampus}" var="c">
-    			
-    	    <c:forEach items="${c.getTrip()}" var="d">
+   		
+    	    <c:forEach items="${list}" var="d">
     	    <form action="<%=application.getContextPath() %>/AddTripInBag" method="post">
     	
             <tr>
-                <td>${c.getCampusName() }</td>
+                <td>${d.getIdTrip() }</td>
                 <td>${d.getDescription() }</td>
                 <td>${d.getDate() } </td>
                 <td class="text-center"><input type="submit" name="trip"  value="add"><span class="glyphicon glyphicon-edit"></span>   </td> 
@@ -38,12 +39,8 @@
             </tr>
             </form> 
             </c:forEach>
-               </c:forEach>
+              
           
     </table>
     </div>
 </div>
-   
-      
-</body>
-</html>

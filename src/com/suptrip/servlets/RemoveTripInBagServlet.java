@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.suptrip.dao.jpa.JpaCampusDao;
 import com.suptrip.dao.jpa.JpaTripDao;
 import com.suptrip.dao.jpa.JpaUsersDao;
 import com.suptrip.entities.Trip;
@@ -19,11 +18,20 @@ import com.suptrip.entities.Users;
 import com.suptrip.util.PersistanceManager;
 
 /**
- * Servlet implementation class AddTripInBag
+ * Servlet implementation class RemoveTripInBagServlet
  */
-@WebServlet("/AddTripInBag")
-public class AddTripInBag extends HttpServlet {
-	
+@WebServlet("/RemoveTripInBagServlet")
+public class RemoveTripInBagServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public RemoveTripInBagServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session= request.getSession();
@@ -33,21 +41,23 @@ public class AddTripInBag extends HttpServlet {
 		String id=request.getParameter("idTrip");
 		List<Trip> list=new ArrayList<>();
 		Trip trip=jpaTrip.findTripById(Long.parseLong(id));
-		user.getTrip().add(trip);
 		list=user.getTrip();
+		for (Trip trip2 : list) {
+			if (trip2.getIdTrip()==trip.getIdTrip()) {
+				trip=trip2;
+			}
+		}
+		
+		list.remove(trip);
 		jpaUser.updateUser(user);
 		session.removeAttribute("user");
 		session.setAttribute("user", user);
 		request.setAttribute("list", list);
-		getServletContext().getRequestDispatcher("/page/listtripofuser.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/page/finishprocess.jsp").forward(request, response);
 
-		
+	}
+	
 		
 	}
 
-	
-	
 
-	
-
-}

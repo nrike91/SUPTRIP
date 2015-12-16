@@ -60,10 +60,10 @@ public class JpaTripDao implements TripDao{
 	}
 
 	@Override
-	public List<Trip> getAllTripListByCampusName() {
+	public List<Trip> getAllTrip() {
 		EntityManager em=emf.createEntityManager(); 
 		try {
-			Query query = em.createQuery("SELECT c FROM TRIP AS c ORDER BY c.campusName");
+			Query query = em.createQuery("SELECT c FROM Trip AS c");
 			return query.getResultList();
 		
 		} catch (NoResultException e) {
@@ -114,6 +114,25 @@ public class JpaTripDao implements TripDao{
 			}
 		}
 		
+	}
+
+	@Override
+	public List<Trip> getTripByString(String value) {
+		// TODO Auto-generated method stub
+		EntityManager em=emf.createEntityManager(); 
+		try {
+			Query query = em.createQuery("SELECT c FROM Trip AS c where c.idTrip LIKE %"+value+"%"
+					+ "c.date LIKE %"+value+"%"
+					+ "c.description LIKE %"+value+"%");
+					
+			return  (List<Trip>) query.getResultList();
+		
+		} catch (NoResultException e) {
+			// TODO: handle exception
+			return null;
+		}finally {
+			em.close();
+		}
 	}
 
 	

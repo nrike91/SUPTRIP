@@ -28,19 +28,21 @@ public class login extends HttpServlet {
 		JpaUsersDao jpaUser=new JpaUsersDao(PersistanceManager.getEntityManagerFactory());
 		 user=(Users) jpaUser.getUserById(Long.parseLong(request.getParameter("id")));
 		if (user!=null) {
-			if (user.getPasswd().equals(request.getParameter("password"))) {
+			String passwd =request.getParameter("password");
+			if (user.getPasswd().equals(passwd)) {
 				session.setAttribute("user", user);
 				
-				getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+				response.sendRedirect(request.getContextPath() + "/index.jsp");
+				return;
 				
 			}
 			
 		}
 			
-		response.sendRedirect(request.getContextPath() + "/auth/login.jsp");
+		response.sendRedirect(request.getContextPath() + "/login");
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect(request.getContextPath() + "/auth/login.jsp");
+		//response.sendRedirect(request.getContextPath() + "/login");
 		
 	}
 	

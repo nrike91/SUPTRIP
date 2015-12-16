@@ -7,7 +7,9 @@ import com.suptrip.entities.Trip;
 public interface TripDao {
 	void addTrip(Trip trip);
 	
-	List<Trip> getAllTripListByCampusName();
+	List<Trip> getAllTrip();
+	List<Trip> getTripByString(String value);
+	
 	void removeTrip(Trip trip);
 	void updateTrip(Trip trip);
 	Trip findTripById(Long id);

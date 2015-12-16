@@ -1,13 +1,17 @@
 package com.suptrip.dao.jpa;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 
 import com.suptrip.dao.UsersDao;
 import com.suptrip.entities.Campus;
 import com.suptrip.entities.Trip;
 import com.suptrip.entities.Users;
+import com.suptrip.util.PersistanceManager;
 
 public class JpaUsersDao implements UsersDao {
 	EntityManagerFactory emf;
@@ -92,7 +96,19 @@ public class JpaUsersDao implements UsersDao {
 	@Override
 	public void addTripInBag(Users user, Trip trip) {
 		// TODO Auto-generated method stub
-		user.getTrip().add(trip);
+		EntityManager em =emf.createEntityManager();
+		em.getTransaction();
+		em.getTransaction().begin();
+		try {
+			user.getTrip().add(trip);
+		} finally {
+			// TODO: handle finally clause
+			if (em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+				
+			}
+		}
+	
 		
 		
 	}
@@ -102,6 +118,19 @@ public class JpaUsersDao implements UsersDao {
 		// TODO Auto-generated method stub
 		user.getTrip().remove(trip);
 		
+	}
+
+	@Override
+	public List<Users> getUserAllUsers() {
+		// TODO Auto-generated method stub
+		EntityManager em=emf.createEntityManager();
+		try {
+			Query query=em.createQuery("SELECT c FROM Users AS c");
+			return ( List<Users>) query.getResultList();
+		} catch (NoResultException e) {
+			// TODO: handle exception
+		}
+		return null;
 	}
 
 }

@@ -1,4 +1,5 @@
 package com.suptrip.entities;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -17,10 +18,16 @@ public class Campus {
 	
 	@ManyToMany 
 	@JoinTable(name="CAMPUS_TRIP")
-	private List<Trip> trip;
+	private List<Trip> trip=new ArrayList<Trip>();
 	
 	
 	
+	public List<Trip> getTrip() {
+		return trip;
+	}
+	public void setTrip(List<Trip> trip) {
+		this.trip = trip;
+	}
 	public List<Users> getUsers() {
 		return users;
 	}

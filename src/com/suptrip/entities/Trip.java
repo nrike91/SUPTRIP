@@ -1,5 +1,6 @@
 package com.suptrip.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,21 +13,25 @@ public class Trip {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long idTrip;
 	
-	@Column
-	private Date date;
-	@Column
-	private String description;
 	
-
+	private Date date;
+	
+	@ManyToMany(mappedBy="trip")
+	private List<Campus> campus=new ArrayList<Campus>();
+	
+	public List<Campus> getCampus() {
+		return campus;
+	}
+	public void setCampus(List<Campus> campus) {
+		this.campus = campus;
+	}
+	private String description;
 	public long getIdTrip() {
 		return idTrip;
 	}
 	public void setIdTrip(long idTrip) {
 		this.idTrip = idTrip;
 	}
-	
-	
-	
 	public Date getDate() {
 		return date;
 	}
@@ -39,6 +44,9 @@ public class Trip {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+
+	
 	
 	
 
